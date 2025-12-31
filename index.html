@@ -5,191 +5,201 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Corps of Royal Engineers | Developer Application</title>
 
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
 <style>
 :root {
-	--bg: #0b0f14;
-	--panel: #1a1f2c;
-	--accent: #c9a24d;
-	--text: #e6e6e6;
-	--muted: #9aa4b2;
-	--danger: #8b1e1e;
+  --bg: #0b0f14;
+  --panel: #1a1f2c;
+  --accent: #c9a24d;
+  --accent-light: #e0bb5e;
+  --text: #e6e6e6;
+  --muted: #9aa4b2;
+  --danger: #8b1e1e;
+  --transition: 0.3s ease;
 }
 
 * {
-	box-sizing: border-box;
-	font-family: 'Segoe UI', Arial, sans-serif;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
-	margin: 0;
-	background: var(--bg);
-	color: var(--text);
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
 }
 
 /* HERO */
 .hero {
-	height: 100vh;
-	background:
-		linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.9)),
-		url("https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Royal_Engineers_Cap_Badge.svg/512px-Royal_Engineers_Cap_Badge.svg.png");
-	background-size: 20%;
-	background-repeat: no-repeat;
-	background-position: center 40px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	flex-direction: column;
-	padding-top: 50px;
+  height: 100vh;
+  background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.9)), url("https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Royal_Engineers_Cap_Badge.svg/512px-Royal_Engineers_Cap_Badge.svg.png");
+  background-size: 20%;
+  background-repeat: no-repeat;
+  background-position: center 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding-top: 50px;
+  animation: fadeIn 1s ease forwards;
 }
 
 .hero h1 {
-	font-size: 3rem;
-	letter-spacing: 3px;
-	color: var(--accent);
-	margin-bottom: 15px;
+  font-size: 3rem;
+  letter-spacing: 3px;
+  color: var(--accent);
+  margin-bottom: 15px;
 }
 
 .hero p {
-	max-width: 700px;
-	color: var(--muted);
-	font-size: 1.1rem;
-	line-height: 1.5rem;
+  max-width: 700px;
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.6rem;
 }
 
 /* PANEL */
 .panel {
-	max-width: 900px;
-	margin: -80px auto 60px;
-	background: var(--panel);
-	padding: 50px;
-	border-radius: 20px;
-	box-shadow: 0 15px 40px rgba(0,0,0,.7);
-	animation: fadeUp 1s ease forwards;
-	border: 2px solid var(--accent);
-	position: relative;
+  max-width: 900px;
+  margin: -80px auto 60px;
+  background: var(--panel);
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 15px 50px rgba(0,0,0,.7);
+  border: 2px solid var(--accent);
+  position: relative;
+  animation: fadeUp 1s ease forwards;
 }
 
 .panel::before {
-	content: "";
-	position: absolute;
-	top: -10px; left: -10px; right: -10px; bottom: -10px;
-	border-radius: 25px;
-	border: 1px dashed rgba(201,162,77,0.5);
-	pointer-events: none;
+  content: "";
+  position: absolute;
+  top: -10px; left: -10px; right: -10px; bottom: -10px;
+  border-radius: 25px;
+  border: 1px dashed rgba(201,162,77,0.5);
+  pointer-events: none;
 }
 
-@keyframes fadeUp {
-	from { opacity: 0; transform: translateY(40px); }
-	to { opacity: 1; transform: translateY(0); }
+/* FORM STYLING */
+form label {
+  display: block;
+  margin-top: 25px;
+  margin-bottom: 6px;
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.95rem;
 }
 
-/* FORM */
-label {
-	display: block;
-	margin-top: 25px;
-	margin-bottom: 6px;
-	color: var(--accent);
-	font-weight: 600;
-	font-size: 0.95rem;
+input[type="text"], input[type="email"], textarea {
+  width: 100%;
+  padding: 14px;
+  background: #0e141d;
+  border: 1px solid #1e2633;
+  color: var(--text);
+  border-radius: 12px;
+  transition: border var(--transition), transform 0.2s;
 }
 
-input[type="text"] {
-	width: 100%;
-	padding: 14px;
-	background: #0e141d;
-	border: 1px solid #1e2633;
-	color: var(--text);
-	border-radius: 12px;
-	transition: border .3s, transform .2s;
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  transform: scale(1.02);
 }
 
-input[type="text"]:focus {
-	outline: none;
-	border-color: var(--accent);
-	transform: scale(1.02);
+textarea {
+  min-height: 100px;
+  resize: vertical;
 }
 
-.checkbox-group {
-	margin-top: 15px;
+/* TABS FOR ROLES */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  border-bottom: 2px solid rgba(201,162,77,0.3);
 }
 
-.checkbox-group label {
-	color: var(--text);
-	font-size: 0.9rem;
-	display: flex;
-	align-items: center;
-	cursor: pointer;
+.tab-btn {
+  padding: 12px 20px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-weight: 500;
+  transition: color var(--transition), border-bottom var(--transition);
+  border-bottom: 3px solid transparent;
 }
 
-.checkbox-group input[type="checkbox"] {
-	margin-right: 12px;
-	width: 18px;
-	height: 18px;
-	accent-color: var(--accent);
-	cursor: pointer;
+.tab-btn.active {
+  color: var(--accent);
+  border-bottom: 3px solid var(--accent);
 }
 
-.section {
-	margin-top: 30px;
-	padding: 25px;
-	background: #0e141d;
-	border-radius: 15px;
-	border-left: 4px solid var(--accent);
-	display: none;
-	box-shadow: inset 0 0 15px rgba(201,162,77,0.1);
-	animation: slideIn .4s ease forwards;
+.tab-content {
+  display: none;
+  margin-top: 20px;
 }
 
-@keyframes slideIn {
-	from { opacity: 0; transform: translateX(-15px); }
-	to { opacity: 1; transform: translateX(0); }
+.tab-content.active {
+  display: block;
+  animation: slideIn 0.4s ease forwards;
 }
 
-button {
-	margin-top: 40px;
-	width: 100%;
-	padding: 16px;
-	background: var(--accent);
-	color: #000;
-	font-weight: bold;
-	border: none;
-	border-radius: 12px;
-	cursor: pointer;
-	transition: all .3s;
-	font-size: 1rem;
+button[type="submit"] {
+  margin-top: 40px;
+  width: 100%;
+  padding: 16px;
+  background: var(--accent);
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-size: 1rem;
 }
 
 button:hover {
-	background: #e0bb5e;
-	transform: scale(1.02);
-	box-shadow: 0 5px 15px rgba(201,162,77,.5);
+  background: var(--accent-light);
+  transform: scale(1.02);
+  box-shadow: 0 5px 15px rgba(201,162,77,.5);
 }
 
 .footer {
-	text-align: center;
-	padding: 40px;
-	color: var(--muted);
-	font-size: 0.85rem;
+  text-align: center;
+  padding: 40px;
+  color: var(--muted);
+  font-size: 0.85rem;
 }
 
-/* DECORATIVE LINES */
-.panel hr {
-	border: none;
-	border-top: 1px dashed rgba(201,162,77,0.3);
-	margin: 20px 0;
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-15px); }
+  to { opacity: 1; transform: translateX(0); }
+}
 </style>
 </head>
 
 <body>
 
 <section class="hero">
-	<div>
-		<h1>CORPS OF ROYAL ENGINEERS</h1>
-		<p>Roblox Development & Engineering Division Recruitment</p>
-	</div>
+  <div>
+    <h1>CORPS OF ROYAL ENGINEERS</h1>
+    <p>Roblox Development & Engineering Division Recruitment</p>
+  </div>
 </section>
 
 <div class="panel">
@@ -201,41 +211,39 @@ button:hover {
 <label>Discord Username</label>
 <input type="text" name="entry.2060771416" required>
 
-<label>Developer Role (Select at least one)</label>
-<div class="checkbox-group">
-	<label><input type="checkbox" value="builder" onchange="toggle()"> Builder / Modeller</label>
-	<label><input type="checkbox" value="scripter" onchange="toggle()"> Scripter</label>
-	<label><input type="checkbox" value="uiux" onchange="toggle()"> UI / UX Designer</label>
-	<label><input type="checkbox" value="clothing" onchange="toggle()"> Clothing Designer</label>
-	<label><input type="checkbox" value="gfx" onchange="toggle()"> GFX Creator</label>
+<label>Developer Role</label>
+<div class="tabs">
+  <button type="button" class="tab-btn active" data-target="builder">Builder / Modeller</button>
+  <button type="button" class="tab-btn" data-target="scripter">Scripter</button>
+  <button type="button" class="tab-btn" data-target="uiux">UI / UX Designer</button>
+  <button type="button" class="tab-btn" data-target="clothing">Clothing Designer</button>
+  <button type="button" class="tab-btn" data-target="gfx">GFX Creator</button>
 </div>
 
-<div id="builder" class="section">
-	<label>[Builder] How do you reduce lag in large maps?</label>
-	<input type="text" name="entry.2085350042">
+<div id="builder" class="tab-content active">
+  <label>[Builder] How do you reduce lag in large maps?</label>
+  <textarea name="entry.2085350042" required></textarea>
 </div>
 
-<div id="scripter" class="section">
-	<label>[Scripter] When should code run on the server and when on the client?</label>
-	<input type="text" name="entry.2071581846">
+<div id="scripter" class="tab-content">
+  <label>[Scripter] When should code run on the server and when on the client?</label>
+  <textarea name="entry.2071581846" required></textarea>
 </div>
 
-<div id="uiux" class="section">
-	<label>[UI / UX] How do you design scalable UI?</label>
-	<input type="text" name="entry.1743834332">
+<div id="uiux" class="tab-content">
+  <label>[UI / UX] How do you design scalable UI?</label>
+  <textarea name="entry.1743834332" required></textarea>
 </div>
 
-<div id="clothing" class="section">
-	<label>[Clothing] What tools do you use?</label>
-	<input type="text" name="entry.672085154">
+<div id="clothing" class="tab-content">
+  <label>[Clothing] What tools do you use?</label>
+  <textarea name="entry.672085154" required></textarea>
 </div>
 
-<div id="gfx" class="section">
-	<label>[GFX] What software do you use?</label>
-	<input type="text" name="entry.1266568074">
+<div id="gfx" class="tab-content">
+  <label>[GFX] What software do you use?</label>
+  <textarea name="entry.1266568074" required></textarea>
 </div>
-
-<hr>
 
 <button type="submit">SUBMIT APPLICATION</button>
 </form>
@@ -246,25 +254,28 @@ button:hover {
 </div>
 
 <script>
-function toggle() {
-	const roles = ["builder","scripter","uiux","clothing","gfx"];
-	roles.forEach(id => {
-		const checkbox = [...document.querySelectorAll("input[type='checkbox']")]
-			.find(c => c.value === id);
-		const section = document.getElementById(id);
-		if (!checkbox || !section) return;
-		section.style.display = checkbox.checked ? "block" : "none";
-		section.querySelector("input").required = checkbox.checked;
-	});
-}
+// Tab functionality
+const tabs = document.querySelectorAll('.tab-btn');
+const contents = document.querySelectorAll('.tab-content');
 
-// Validate at least one checkbox is checked
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+
+    contents.forEach(c => c.classList.remove('active'));
+    document.getElementById(tab.dataset.target).classList.add('active');
+  });
+});
+
+// Validate form
 document.getElementById('appForm').addEventListener('submit', function(e){
-	const checkboxes = [...document.querySelectorAll('.checkbox-group input[type="checkbox"]')];
-	if(!checkboxes.some(c => c.checked)){
-		alert("Please select at least one Developer Role!");
-		e.preventDefault();
-	}
+  const activeContent = document.querySelector('.tab-content.active textarea');
+  if(!activeContent.value.trim()){
+    alert("Please fill out the active role's question!");
+    activeContent.focus();
+    e.preventDefault();
+  }
 });
 </script>
 
